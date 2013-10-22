@@ -3,6 +3,7 @@ TDMScreenEdgePanGestureRecognizer
 
 Small extension to UIScreenEdgePanGestureRecognizer to make it play nice with UIScrollViews.
 
+
 ## How to use
 
     TDMScreenEdgePanGestureRecognizer *screenEdgePan = [[TDMScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanned:)];
@@ -15,6 +16,7 @@ Small extension to UIScreenEdgePanGestureRecognizer to make it play nice with UI
 ## Reason to use
 
 If you have a `UIScrollView` and a `UIScreenEdgePanGestureRecognizer`, it is likely that the edgepan and the scrollview-pan conflicts. This happens when the 1) scrollview extend all (~<15px) the way to the edges *and* 2) the scrollview can bounce in the direction orthogonal to edgepans detection-edge.
+
 ### Explained in code
 
     - (void)viewDidLoad
