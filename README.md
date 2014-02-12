@@ -6,12 +6,13 @@ Small extension to UIScreenEdgePanGestureRecognizer to make it play nice with UI
 
 ## How to use
 
-    TDMScreenEdgePanGestureRecognizer *screenEdgePan = [[TDMScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanned:)];
-    screenEdgePan.edges = UIRectEdgeLeft;
-    [self.view addGestureRecognizer:_edgePanGestureRecognizer];
-    // Call after setup (= added to view)
-    [_edgePanGestureRecognizer requireToFailSubScrollViewsPanGestures];
-
+```objective-c
+TDMScreenEdgePanGestureRecognizer *screenEdgePan = [[TDMScreenEdgePanGestureRecognizer alloc] initWithTarget:self action:@selector(edgePanned:)];
+screenEdgePan.edges = UIRectEdgeLeft;
+[self.view addGestureRecognizer:screenEdgePan];
+// Call after setup (= added to view)
+[screenEdgePan requireToFailSubScrollViewsPanGestures];
+```
 
 ## Reason to use
 
@@ -19,18 +20,20 @@ If you have a `UIScrollView` and a `UIScreenEdgePanGestureRecognizer`, it is lik
 
 ### Explained in code
 
-    - (void)viewDidLoad
-    {
-      [super viewDidload];
-      
-      UIScrollView *scrollView = [UIScrollView new];
-      self.view addSubview:scrollView];
-      scrollView.frame = self.view.bounds;
-      
-      UIScreenEdgePanGestureRecognizer *edgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:...];
-      self.view addGestureRecognizer:edgePan];
-      
-      // This
-      edgePan.edges = UIRectLeft;
-      scrollView.alwaysBounceHorizontally = YES;
-    }
+```objective-c
+- (void)viewDidLoad
+{
+  [super viewDidload];
+  
+  UIScrollView *scrollView = [UIScrollView new];
+  self.view addSubview:scrollView];
+  scrollView.frame = self.view.bounds;
+  
+  UIScreenEdgePanGestureRecognizer *edgePan = [[UIScreenEdgePanGestureRecognizer alloc] initWithTarget:...];
+  self.view addGestureRecognizer:edgePan];
+  
+  // This
+  edgePan.edges = UIRectLeft;
+  scrollView.alwaysBounceHorizontally = YES;
+}
+```
